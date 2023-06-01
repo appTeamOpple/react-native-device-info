@@ -771,7 +771,10 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
 
   @SuppressLint("HardwareIds")
   @ReactMethod(isBlockingSynchronousMethod = true)
-  public String getUniqueIdSync() { return getString(getReactApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID); }
+  public String getUniqueIdSync() { 
+    // return getString(getReactApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID); 
+    return "";
+  }
 
   @SuppressLint("HardwareIds")
   @ReactMethod(isBlockingSynchronousMethod = true)
