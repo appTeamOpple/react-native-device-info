@@ -819,7 +819,12 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
 
   @SuppressLint("HardwareIds")
   @ReactMethod(isBlockingSynchronousMethod = true)
-  public String getUniqueIdSync() { return getString(getReactApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID); }
+  public String getUniqueIdSync() { 
+    SharedPreferences sp = getReactApplicationContext().getSharedPreferences("ble_mesh",
+            Context.MODE_PRIVATE);
+    boolean agree = sp.getBoolean("user_agree_authorize",false);
+    return agree ? getString(getReactApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) : "";
+  }
   @ReactMethod
   public void getUniqueId(Promise p) {
     p.resolve(getUniqueIdSync());
