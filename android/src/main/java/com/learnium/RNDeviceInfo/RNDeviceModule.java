@@ -473,7 +473,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
   @ReactMethod(isBlockingSynchronousMethod = true)
   public boolean isBatteryChargingSync(){
     IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-    Intent batteryStatus = CompatReceviceHelp.compatRegisterReceiver(getReactApplicationContext(),null,filter,false);
+    Intent batteryStatus = CompatReceviceHelp.compatRegisterReceiver(getReactApplicationContext(),null,ifilter,false);
     //Intent batteryStatus = getReactApplicationContext().registerReceiver(null, ifilter);
     int status = 0;
     if (batteryStatus != null) {
